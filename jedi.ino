@@ -27,17 +27,18 @@ delay(1500); //wait for the sensor to be ready
 }
 
 void loop(){
-  delay(1000);
+  delay(250);
  getGyroValues(); // This will update x, y, and z with new values
 
-Serial.print("X:");
- Serial.print(x); //Here you can do some operations befor you use that value
+ if(abs(x)>600 && abs(x)>abs(y)) { 
+  Serial.print("X:");
+ Serial.println(x);} //Here you can do some operations befor you use that value
  //For example set it on a surface and substract or add numbers to get 0,0,0 if you want that position to be your reference
- Serial.print(" Y:");
- Serial.print(y);
+ if(abs(y)>600 && abs(y)>abs(x)) {Serial.print(" Y:");
+ Serial.println(y);}
 
-Serial.print(" Z:");
- Serial.println(z);
+/*Serial.print(" Z:");
+  Serial.println(z);*/
 
 delay(100); //Just here to slow down the serial to make it more readable
 }
